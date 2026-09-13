@@ -1,0 +1,34 @@
+# --- copyrighted game data: never commit ---------------------------------
+# Building pokered produces a real Pokemon Red ROM. It and anything containing
+# it (disk images, save dumps, kernel dumps) are Nintendo's, not ours.
+*.gbc
+*.gb
+*.img
+*.sav
+*.sym
+*.map
+pokered-master/
+
+# --- third-party toolchain -----------------------------------------------
+rgbds-win64/
+
+# --- build output --------------------------------------------------------
+*.bin
+*.o
+*.elf
+recomp/bin/
+
+# generated graphics (rebuilt from the PNGs in pokered)
+*.2bpp
+*.1bpp
+*.pic
+
+# --- debugging artefacts -------------------------------------------------
+*.log
+*.txt
+*.ppm
+*.wav
+*.png
+
+# screenshots kept for the README are tracked explicitly
+!docs/*.png
