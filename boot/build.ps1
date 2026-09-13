@@ -16,7 +16,7 @@ function Find-Tool($name, $candidates) {
 $nasm = Find-Tool "nasm" @("C:\Program Files\NASM\nasm.exe")
 $qemu = Find-Tool "qemu-system-x86_64" @("C:\Program Files\qemu\qemu-system-x86_64.exe")
 
-$out = Join-Path $root "sharpemu.bin"
+$out = Join-Path $root "pokemonx86.bin"
 # nasm writes warnings to stderr; only the exit code decides success.
 $nasmOut = & $nasm -f bin -i "$root\" -o $out (Join-Path $root "boot.asm") 2>&1
 if ($LASTEXITCODE -ne 0) { $nasmOut | Out-String | Write-Host; throw "nasm failed" }
@@ -54,7 +54,7 @@ $psi.RedirectStandardError = $true
 $psi.UseShellExecute = $false
 $p = [System.Diagnostics.Process]::Start($psi)
 
-$bootWait = if ($env:SHARPEMU_WAIT) { [int]$env:SHARPEMU_WAIT } else { 12 }
+$bootWait = if ($env:POKEMONX86_WAIT) { [int]$env:POKEMONX86_WAIT } else { 12 }
 Start-Sleep -Seconds $bootWait   # emulating frames under TCG takes a while
 try {
     $client = New-Object System.Net.Sockets.TcpClient("127.0.0.1", $port)

@@ -1,4 +1,4 @@
-# Assembles sharpemu and launches it in a visible QEMU window.
+# Assembles pokemonx86 and launches it in a visible QEMU window.
 # Close the QEMU window to stop it.
 
 $ErrorActionPreference = "Stop"
@@ -15,7 +15,7 @@ function Find-Tool($name, $candidates) {
 $nasm = Find-Tool "nasm" @("C:\Program Files\NASM\nasm.exe")
 $qemu = Find-Tool "qemu-system-x86_64" @("C:\Program Files\qemu\qemu-system-x86_64.exe")
 
-$bin = Join-Path $root "sharpemu.bin"
+$bin = Join-Path $root "pokemonx86.bin"
 $out = & $nasm -f bin -i "$root\" -o $bin (Join-Path $root "boot.asm") 2>&1
 if ($LASTEXITCODE -ne 0) { $out | Out-String | Write-Host; throw "nasm failed" }
 Write-Host "assembled $bin ($((Get-Item $bin).Length) bytes)"

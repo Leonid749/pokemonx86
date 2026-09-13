@@ -1,4 +1,4 @@
-; Bare-metal x86-64 boot stub for sharpemu.
+; Bare-metal x86-64 boot stub for pokemonx86.
 ;
 ; Loaded by QEMU's -kernel via multiboot1, which hands us 32-bit protected mode
 ; at 1MB with the GB ROM already in memory as a module. That avoids needing a

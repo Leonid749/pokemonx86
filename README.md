@@ -1,4 +1,4 @@
-# sharpemu
+# pokemonx86
 
 Pokémon Red running on bare-metal x86-64. No operating system, no host emulator —
 the machine boots from a USB stick straight into the game.
@@ -86,7 +86,7 @@ compiler. QEMU is optional but recommended for testing.
 git clone https://github.com/pret/pokered pokered-master
 powershell -File recomp/build.ps1      # build the C# tooling
 powershell -File build_rom.ps1         # build + SHA-1 verify pokered.gbc
-powershell -File boot/mkdisk.ps1       # produce boot/sharpemu.img
+powershell -File boot/mkdisk.ps1       # produce boot/pokemonx86.img
 ```
 
 `build_rom.ps1` replaces pret's Makefile — it discovers graphics targets by
@@ -100,7 +100,7 @@ finishes by checking the ROM against the official SHA-1.
 powershell -File boot/run.ps1          # QEMU, windowed, with audio
 ```
 
-Write `boot/sharpemu.img` to a USB stick with [Rufus](https://rufus.ie) in **DD
+Write `boot/pokemonx86.img` to a USB stick with [Rufus](https://rufus.ie) in **DD
 mode** for real hardware. Boot with CSM/Legacy enabled and Secure Boot off.
 
 ### Controls

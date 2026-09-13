@@ -49,7 +49,7 @@ start:
     jmp .hang
 
 drive:   db 0
-msg_err: db "sharpemu: disk read failed", 0
+msg_err: db "pokemonx86: disk read failed", 0
 
 align 4
 dap:

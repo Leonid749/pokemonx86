@@ -1,4 +1,4 @@
-# Builds sharpemu.img -- a raw, BIOS-bootable disk image.
+# Builds pokemonx86.img -- a raw, BIOS-bootable disk image.
 #
 # Layout (512-byte sectors):
 #   LBA 0        boot sector
@@ -25,19 +25,19 @@ function Asm($src, $out) {
 Write-Host "assembling:"
 Asm "bootsect.asm" "$root\bootsect.bin"
 Asm "stage2.asm"   "$root\stage2.bin"
-Asm "boot.asm"     "$root\sharpemu.bin"
+Asm "boot.asm"     "$root\pokemonx86.bin"
 
 $rom = Join-Path $repo "pokered-master\pokered.gbc"
 if (-not (Test-Path $rom)) { throw "ROM missing - run build_rom.ps1 first" }
 
 $SEC = 512
-$img = Join-Path $root "sharpemu.img"
+$img = Join-Path $root "pokemonx86.img"
 
 # Sector budget must match the LBA constants in stage2.asm.
 $layout = @(
     @{ File = "$root\bootsect.bin";  Lba = 0;   Max = 1    },
     @{ File = "$root\stage2.bin";    Lba = 1;   Max = 32   },
-    @{ File = "$root\sharpemu.bin";  Lba = 33;  Max = 64   },
+    @{ File = "$root\pokemonx86.bin";  Lba = 33;  Max = 64   },
     @{ File = $rom;                  Lba = 128; Max = 2048 }
 )
 
